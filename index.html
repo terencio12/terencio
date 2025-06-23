@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Presidentes do Brasil</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: white;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        color: #006400;
+    }
+
+    .item.selected {
+    outline: 5px solid #FFD700;
+    box-shadow: 0 0 15px #FFD700;
+    }
+
+    #game, #ordem {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    max-width: 1200px; /* ⬅️ Reduzi para ficar mais centralizado */
+    margin: auto;
+    padding: 0 40px; /* ⬅️ Espaço lateral */
+}
+
+
+    .item {
+        background-color: white;
+        border: 4px solid #006400;
+        border-radius: 12px;
+        padding: 10px;
+        cursor: grab;
+        user-select: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 250px;
+        transition: transform 0.2s;
+        position: relative;
+    }
+
+    .item:hover {
+        transform: scale(1.05);
+    }
+
+    .item img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        pointer-events: none;
+    }
+
+    /* Tooltip estilizado */
+    .item::after {
+        content: attr(data-name);
+        position: absolute;
+        bottom: 110%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #006400;
+        color: white;
+        padding: 6px 12px;
+        border-radius: 8px;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+        font-size: 14px;
+        z-index: 10;
+    }
+
+    .item:hover::after {
+        opacity: 1;
+    }
+
+    #message {
+        margin: 20px;
+        font-size: 1.8em;
+        color: #228B22;
+        font-weight: bold;
+    }
+
+    button {
+        padding: 12px 24px;
+        font-size: 18px;
+        background-color: #006400;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #228B22;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>Presidentes do Brasil</h1>
+
+
+<button id="startBtn" onclick="startGame()">JOGAR</button>
+<br><br>
+
+<!-- Lista na ordem correta -->
+<div id="ordem"></div>
+
+<br><br>
+
+<!-- Área do jogo -->
+<div id="game" style="display:none;"></div>
+
+<div id="message"></div>
+
+<button id="restartBtn" onclick="restartGame()" style="display:none;">Reiniciar</button>
+
+<!-- 🎵 Música de fundo -->
+<audio id="bgMusic" src="sons/musica.mp3" loop></audio>
+
+<script>
+const presidentes = [
+    "Deodoro da Fonseca",
+    "Floriano Peixoto",
+    "Prudente de Morais",
+    "Campos Sales",
+    "Rodrigues Alves",
+    "Afonso Pena",
+    "Nilo Peçanha",
+    "Hermes da Fonseca",
+    "Venceslau Brás",
+    "Delfim Moreira",
+    "Epitácio Pessoa",
+    "Artur Bernardes",
+    "Washington Luís",
+    "Getúlio Vargas (1930–1945)",
+    "José Linhares",
+    "Eurico Gaspar Dutra",
+    "Getúlio Vargas (1951–1954)",
+    "Café Filho",
+    "Carlos Luz",
+    "Nereu Ramos",
+    "Juscelino Kubitschek",
+    "Jânio Quadros",
+    "Ranieri Mazzilli (1ª vez)",
+    "João Goulart",
+    "Ranieri Mazzilli (2ª vez)",
+    "Castelo Branco",
+    "Costa e Silva",
+    "Emílio Garrastazu Médici",
+    "Ernesto Geisel",
+    "João Figueiredo",
+    "José Sarney",
+    "Fernando Collor",
+    "Itamar Franco",
+    "Fernando Henrique Cardoso",
+    "Luiz Inácio Lula da Silva",
+    "Dilma Rousseff",
+    "Michel Temer",
+    "Jair Bolsonaro",
+    "Luiz Inácio Lula da Silva (Atual)"
+];
+
+const ordemContainer = document.getElementById('ordem');
+const gameContainer = document.getElementById('game');
+const message = document.getElementById('message');
+const startBtn = document.getElementById('startBtn');
+const restartBtn = document.getElementById('restartBtn');
+const bgMusic = document.getElementById('bgMusic');
+
+let musicStarted = false;
+
+function startMusic() {
+    if (!musicStarted) {
+        bgMusic.volume = 0.4;
+        bgMusic.play().catch(() => {
+            console.log('Clique para iniciar a música.');
+        });
+        musicStarted = true;
+    }
+}
+
+function showOrder() {
+    ordemContainer.innerHTML = '';
+    presidentes.forEach((name, index) => {
+        const div = document.createElement('div');
+        div.className = 'item';
+        div.setAttribute('data-name', name);
+
+        const img = document.createElement('img');
+        img.src = `imagens/${index + 1}.png`;
+        img.alt = name;
+
+        div.appendChild(img);
+        ordemContainer.appendChild(div);
+    });
+}
+
+function shuffle(array) {
+    return array.map(value => ({ value, sort: Math.random() }))
+                .sort((a, b) => a.sort - b.sort)
+                .map(({ value }) => value);
+}
+
+let selectedItem = null;
+
+function createGame() {
+    message.textContent = '';
+    gameContainer.innerHTML = '';
+    selectedItem = null;
+
+    const shuffled = shuffle([...presidentes]);
+
+    shuffled.forEach((name) => {
+        const div = document.createElement('div');
+        div.className = 'item';
+        div.setAttribute('data-name', name);
+
+        const img = document.createElement('img');
+        img.src = `imagens/${presidentes.indexOf(name) + 1}.png`;
+        img.alt = name;
+
+        div.appendChild(img);
+
+        div.addEventListener('click', () => {
+            handleItemClick(div);
+        });
+
+        gameContainer.appendChild(div);
+    });
+}
+
+function handleItemClick(item) {
+    if (selectedItem === item) {
+        item.classList.remove('selected');
+        selectedItem = null;
+        return;
+    }
+
+    if (!selectedItem) {
+        item.classList.add('selected');
+        selectedItem = item;
+        return;
+    }
+
+    const parent = item.parentNode;
+    const itemIndex = Array.from(parent.children).indexOf(item);
+    const selectedIndex = Array.from(parent.children).indexOf(selectedItem);
+
+    if (itemIndex > selectedIndex) {
+        parent.insertBefore(selectedItem, item.nextSibling);
+    } else {
+        parent.insertBefore(selectedItem, item);
+    }
+
+    selectedItem.classList.remove('selected');
+    selectedItem = null;
+
+    checkOrder();
+}
+
+function checkOrder() {
+    const current = [...gameContainer.children].map(el => el.getAttribute('data-name'));
+    const isCorrect = current.every((name, index) => name === presidentes[index]);
+
+    if (isCorrect) {
+        message.textContent = "🎉 Ordem e Progresso! Você concluiu com excelência!";
+    } else {
+        message.textContent = "";
+    }
+}
+
+function startGame() {
+    startMusic();
+    ordemContainer.style.display = 'none';
+    startBtn.style.display = 'none';
+    gameContainer.style.display = 'grid';
+    restartBtn.style.display = 'inline-block';
+    createGame();
+}
+
+function restartGame() {
+    message.textContent = '';
+    createGame();
+}
+
+showOrder();
+</script>
+
+</body>
+</html>
