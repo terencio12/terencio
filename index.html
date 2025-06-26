@@ -6,6 +6,7 @@
 <title>Presidentes do Brasil</title>
 
 <style>
+    
     body {
         font-family: Arial, sans-serif;
         text-align: center;
@@ -17,6 +18,15 @@
     h1 {
         color: #006400;
     }
+
+    .item.correct {
+    border: 4px solid #32CD32; /* Verde limão */
+    box-shadow: 0 0 10px #32CD32;
+}
+.item.incorrect {
+    border: 4px solid #FF4500; /* Vermelho alaranjado */
+    box-shadow: 0 0 10px #FF4500;
+}
 
     .item.selected {
     outline: 5px solid #FFD700;
@@ -372,25 +382,32 @@ function handleItemClick(item) {
 }
 
 function checkOrder() {
-    const current = [...gameContainer.children].map(el => limparNome(el.getAttribute('data-name')));
+    const items = [...gameContainer.children];
+    const current = items.map(el => limparNome(el.getAttribute('data-name')));
     const correct = presidentes.map(limparNome);
 
     let isCorrect = true;
 
-    for (let i = 0; i < correct.length; i++) {
-        if (current[i] !== correct[i]) {
+    items.forEach((el, i) => {
+        const name = current[i];
+        if (name === correct[i]) {
+            el.classList.add('correct');
+            el.classList.remove('incorrect');
+        } else {
+            el.classList.remove('correct');
+            el.classList.add('incorrect');
             isCorrect = false;
-            break;
         }
-    }
+    });
 
     if (isCorrect) {
         message.textContent = "🎉 Ordem e Progresso! Você concluiu com excelência!";
-        startPresentation(); // Apresentação final
+        startPresentation();
     } else {
         message.textContent = "";
     }
 }
+
 
 
 
