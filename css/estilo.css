@@ -8,25 +8,22 @@
 
     h1 {
         color: #006400;
+        
     }
-
-    .item.correct {
-    border: 4px solid #32CD32; /* Verde limão */
-    box-shadow: 0 0 10px #32CD32;
+.item.correct {
+    box-shadow: 0 0 12px #006400;
 }
+
 .item.incorrect {
-    border: 4px solid #FF4500; /* Vermelho alaranjado */
-    box-shadow: 0 0 10px #FF4500;
+    border: 4px solid #640000; /* cor vinho escuro */
+    box-shadow: 0 0 12px #640000;
 }
 #game.fullscreen {
     padding: 0; /* remove espaços laterais */
     max-width: 100vw;
 }
 
-.item.selected {
-    transform: scale(1.3); /* já usado para ampliar */
-    z-index: 100;
-}
+
 
 
     .item.selected {
@@ -42,6 +39,14 @@
     margin: auto;
     padding: 0 40px; /* ⬅️ Espaço lateral */
 }
+
+/* 📱 Quando for celular em modo landscape: 4 colunas */
+@media screen and (max-height: 600px) and (orientation: landscape) {
+  #game, #ordem {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 
 @media (max-width: 600px) {
     #game, #ordem {
