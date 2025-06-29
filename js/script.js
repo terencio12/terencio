@@ -20,13 +20,11 @@ const presidentes = [
     "Café Filho",
     "Carlos Luz",
     "Nereu Ramos",
-
     "Juscelino Kubitschek",
     "Jânio Quadros",
     "Ranieri Mazzilli (1ª vez)",
     "João Goulart",
     "Ranieri Mazzilli (2ª vez)",
-
     "Castelo Branco",
     "Costa e Silva",
     "Emílio Garrastazu Médici",
@@ -40,7 +38,7 @@ const presidentes = [
     "Dilma Rousseff",
     "Michel Temer",
     "Jair Bolsonaro",
-    "Luiz Inácio Lula da Silva (Atual)"
+    "Luiz Inácio Lula da Silva"
   
 
 ];
@@ -51,9 +49,7 @@ const presidentesData = [
     { nome: "Floriano Peixoto", imagem: "imagens/2.png", inicio: "1891", fim: "1894" },
     { nome: "Prudente de Morais", imagem: "imagens/3.png", inicio: "1894", fim: "1898" },
     { nome: "Campos Sales", imagem: "imagens/4.png", inicio: "1898", fim: "1902" },
-    { nome: "Rodrigues Alves", imagem: "imagens/5.png", inicio: "1902", fim: "1906" },
-     
-    
+    { nome: "Rodrigues Alves", imagem: "imagens/5.png", inicio: "1902", fim: "1906" }, 
     { nome: "Afonso Pena", imagem: "imagens/6.png", inicio: "1906", fim: "1909" },
     { nome: "Nilo Peçanha", imagem: "imagens/7.png", inicio: "1909", fim: "1910" },
     { nome: "Hermes da Fonseca", imagem: "imagens/8.png", inicio: "1910", fim: "1914" },
@@ -69,14 +65,11 @@ const presidentesData = [
     { nome: "Café Filho", imagem: "imagens/18.png", inicio: "1954", fim: "1955" },
     { nome: "Carlos Luz", imagem: "imagens/19.png", inicio: "1955", fim: "1955" },
     { nome: "Nereu Ramos", imagem: "imagens/20.png", inicio: "1955", fim: "1956" },
-
     { nome: "Juscelino Kubitschek", imagem: "imagens/21.png", inicio: "1956", fim: "1961" },
     { nome: "Jânio Quadros", imagem: "imagens/22.png", inicio: "1961", fim: "1961" },
     { nome: "Ranieri Mazzilli (1ª vez)", imagem: "imagens/23.png", inicio: "1961", fim: "1961" },
     { nome: "João Goulart", imagem: "imagens/24.png", inicio: "1961", fim: "1964" },
     { nome: "Ranieri Mazzilli (2ª vez)", imagem: "imagens/25.png", inicio: "1964", fim: "1964" },
-
-
     { nome: "Castelo Branco", imagem: "imagens/26.png", inicio: "1964", fim: "1967" },
     { nome: "Costa e Silva", imagem: "imagens/27.png", inicio: "1967", fim: "1969" },
     { nome: "Emílio Garrastazu Médici", imagem: "imagens/28.png", inicio: "1969", fim: "1974" },
@@ -90,9 +83,7 @@ const presidentesData = [
     { nome: "Dilma Rousseff", imagem: "imagens/36.png", inicio: "2011", fim: "2016" },
     { nome: "Michel Temer", imagem: "imagens/37.png", inicio: "2016", fim: "2019" },
     { nome: "Jair Bolsonaro", imagem: "imagens/38.png", inicio: "2019", fim: "2023" },
-    { nome: "Luiz Inácio Lula da Silva (Atual)", imagem: "imagens/39.png", inicio: "2023", fim: "Atual" }
-     
-     
+    { nome: "Luiz Inácio Lula da Silva", imagem: "imagens/39.png", inicio: "2023", fim: "Atual" }    
 ];
 
 const ordemContainer = document.getElementById('ordem');
@@ -107,6 +98,19 @@ let currentStep = 0;
 let locked = false;
 
 let musicStarted = false;
+
+function esconderTitulos() {
+    const h1s = document.getElementsByTagName('h1');
+    const h2s = document.getElementsByTagName('h2');
+
+    for (let h1 of h1s) {
+        h1.style.display = 'none';
+    }
+
+    for (let h2 of h2s) {
+        h2.style.display = 'none';
+    }
+}
 
 function limparNome(nome) {
     // Apenas Mazzilli deve ignorar o conteúdo entre parênteses
@@ -129,20 +133,30 @@ function startMusic() {
 
 function showOrder() {
     ordemContainer.innerHTML = '';
-    presidentes.forEach((name, index) => {
+    presidentes.forEach((name) => {
         const div = document.createElement('div');
         div.className = 'item';
         div.setAttribute('data-name', name);
-        div.setAttribute('data-hover', limparNome(name)); // ✅ Aqui agora está certo!
+        div.setAttribute('data-hover', limparNome(name)); // Mantém compatibilidade, se necessário
+
+        // Busca os dados corretos na lista de presidentesData
+        const presidenteInfo = presidentesData.find(p => limparNome(p.nome) === limparNome(name));
 
         const img = document.createElement('img');
-        img.src = `imagens/${index + 1}.png`;
+        img.src = presidenteInfo ? presidenteInfo.imagem : '';
         img.alt = name;
 
+        const label = document.createElement('div');
+        label.className = 'presidente-nome';
+        label.textContent = limparNome(name);
+
         div.appendChild(img);
+        div.appendChild(label);
+
         ordemContainer.appendChild(div);
     });
 }
+
 
 
 function shuffle(array) {
@@ -161,7 +175,11 @@ function createGame() {
     currentStep = 0;
     locked = false;
 
-    const shuffled = shuffle([...presidentes]);
+    let shuffled;
+do {
+    shuffled = shuffle([...presidentes]);
+} while (shuffled.every((nome, i) => limparNome(nome) === limparNome(ordem[i])));
+
 
     shuffled.forEach((name) => {
         const div = document.createElement('div');
@@ -169,11 +187,21 @@ function createGame() {
         div.setAttribute('data-name', name);
         div.setAttribute('data-hover', limparNome(name));
 
+      const presidenteInfo = presidentesData.find(p => limparNome(p.nome) === limparNome(name));
+if (!presidenteInfo) {
+    console.warn('Presidente não encontrado:', name);
+}
+
         const img = document.createElement('img');
-        img.src = `imagens/${presidentes.indexOf(name) + 1}.png`;
+        img.src = presidenteInfo ? presidenteInfo.imagem : '';
         img.alt = name;
 
+        const label = document.createElement('div');
+        label.className = 'presidente-nome';
+        label.textContent = limparNome(name);
+
         div.appendChild(img);
+        div.appendChild(label);
 
         div.addEventListener('click', () => {
             if (locked) return;
@@ -185,6 +213,8 @@ function createGame() {
 
     checkOrder();
 }
+
+
 
 function handleStepClick(item, name) {
     const esperado = limparNome(ordem[currentStep]);
@@ -239,6 +269,7 @@ function handleStepClick(item, name) {
 
 
    function handleStepClick(item, name) {
+    while (currentStep < ordem.length && gameContainer.children[currentStep]?.dataset.name && limparNome(gameContainer.children[currentStep].dataset.name) === limparNome(ordem[currentStep])) currentStep++;
     const esperado = limparNome(ordem[currentStep]);
     const clicado = limparNome(name);
 
@@ -328,6 +359,7 @@ function checkOrder() {
 
 
 function startGame() {
+    esconderTitulos();
     startMusic();
     ordemContainer.style.display = 'none';
     startBtn.style.display = 'none';

@@ -6,7 +6,7 @@
         padding: 20px;
     }
 
-    h1 {
+    h1, h2{
         color: #006400;
         
     }
@@ -18,6 +18,21 @@
     border: 4px solid #640000; /* cor vinho escuro */
     box-shadow: 0 0 12px #640000;
 }
+
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.presidente-nome {
+    margin-top: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
 #game.fullscreen {
     padding: 0 5px; /* remove espaços laterais */
     max-width: 100vw;
@@ -82,7 +97,7 @@
 
     /* Tooltip estilizado */
     .item::after {
-        content: attr(data-hover);
+        
         position: absolute;
         bottom: 110%;
         left: 50%;
