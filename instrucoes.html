@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Instruções do Jogo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2em;
+      background-color: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+    }
+    h1 {
+      text-align: center;
+      color: #0057a0;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 2em;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    ul {
+      margin-top: 1em;
+    }
+    .btn {
+      display: block;
+      margin: 2em auto 0;
+      padding: 1em 2em;
+      background-color: #0057a0;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1em;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background-color: #004178;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Como Jogar</h1>
+    <p>Seu objetivo é montar a ordem correta arrastando ou clicando nas peças certas, na sequência certa.</p>
+
+    <h2>Instruções:</h2>
+    <ul>
+      <li>Você verá uma linha com espaços em branco (as “casas”).</li>
+      <li>Abaixo, estarão as peças (presidentes, ou itens a ordenar).</li>
+      <li>Clique na peça correspondente ao próximo item da sequência correta.</li>
+      <li>Se estiver correta, ela irá automaticamente para a casa certa.</li>
+      <li>Se errar, a peça pisca em vermelho para tentar de novo.</li>
+      <li>O jogo avança automaticamente se alguma peça já estiver na posição correta por acaso.</li>
+    </ul>
+
+    <p>Continue até completar toda a sequência corretamente!</p>
+
+    <a href="index.html" class="btn" onclick="localStorage.setItem('instrucoesVistas', 'true')">
+  Iniciar o Jogo
+</a>
+  </div>
+</body>
+</html>

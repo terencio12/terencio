@@ -102,6 +102,10 @@ const startBtn = document.getElementById('startBtn');
 const restartBtn = document.getElementById('restartBtn');
 const bgMusic = document.getElementById('bgMusic');
 
+let ordem = [...presidentes]; // ordem correta
+let currentStep = 0;
+let locked = false;
+
 let musicStarted = false;
 
 function limparNome(nome) {
@@ -149,10 +153,13 @@ function shuffle(array) {
 
 let selectedItem = null;
 
+
 function createGame() {
-    message.textContent = '';
     gameContainer.innerHTML = '';
+    message.textContent = '';
     selectedItem = null;
+    currentStep = 0;
+    locked = false;
 
     const shuffled = shuffle([...presidentes]);
 
@@ -160,7 +167,7 @@ function createGame() {
         const div = document.createElement('div');
         div.className = 'item';
         div.setAttribute('data-name', name);
-        div.setAttribute('data-hover', limparNome(name)); // 👈 Aqui sim é o lugar certo
+        div.setAttribute('data-hover', limparNome(name));
 
         const img = document.createElement('img');
         img.src = `imagens/${presidentes.indexOf(name) + 1}.png`;
@@ -169,63 +176,124 @@ function createGame() {
         div.appendChild(img);
 
         div.addEventListener('click', () => {
-            handleItemClick(div);
+            if (locked) return;
+            handleStepClick(div, name);
         });
 
         gameContainer.appendChild(div);
-        checkOrder();
     });
+
+    checkOrder();
+}
+
+function handleStepClick(item, name) {
+    const esperado = limparNome(ordem[currentStep]);
+    const clicado = limparNome(name);
+
+    if (clicado === esperado) {
+        // move para posição correta
+        const destino = document.createElement('div');
+        destino.className = 'item correct';
+        destino.setAttribute('data-name', name);
+        destino.setAttribute('data-hover', limparNome(name));
+
+        const img = document.createElement('img');
+        img.src = item.querySelector('img').src;
+        img.alt = name;
+        destino.appendChild(img);
+
+        const oldItem = item;
+        oldItem.classList.add('fade-out');
+
+        setTimeout(() => {
+            gameContainer.removeChild(oldItem);
+            gameContainer.insertBefore(destino, gameContainer.children[currentStep]);
+            currentStep++;
+
+            // 👉 Verifica se as próximas peças já estão corretas e avança automaticamente
+            while (
+                currentStep < presidentes.length &&
+                limparNome(gameContainer.children[currentStep]?.getAttribute('data-name')) === limparNome(ordem[currentStep])
+            ) {
+                gameContainer.children[currentStep].classList.add('correct');
+                currentStep++;
+            }
+
+            checkOrder();
+
+            if (currentStep === presidentes.length) {
+                message.textContent = "🎉 Ordem e Progresso! Você concluiu com excelência!";
+                startPresentation();
+            }
+        }, 300);
+    } else {
+        item.classList.add('sutil-erro');
+        setTimeout(() => {
+            item.classList.remove('sutil-erro');
+        }, 600);
+    }
 }
 
 
-   function handleItemClick(item) {
-    if (selectedItem === item) {
-        item.classList.remove('selected');
-        item.style.transform = '';
-        selectedItem = null;
-        return;
+
+
+
+   function handleStepClick(item, name) {
+    const esperado = limparNome(ordem[currentStep]);
+    const clicado = limparNome(name);
+
+    if (clicado === esperado) {
+        // Elemento de destino ainda vazio no DOM
+        const placeholder = gameContainer.children[currentStep];
+
+        // 👉 Faz a rolagem até a casa de destino
+        if (placeholder) {
+            placeholder.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        // move para posição correta
+        const destino = document.createElement('div');
+        destino.className = 'item correct';
+        destino.setAttribute('data-name', name);
+        destino.setAttribute('data-hover', limparNome(name));
+
+        const img = document.createElement('img');
+        img.src = item.querySelector('img').src;
+        img.alt = name;
+        destino.appendChild(img);
+
+        const oldItem = item;
+        oldItem.classList.add('fade-out');
+
+        setTimeout(() => {
+            gameContainer.removeChild(oldItem);
+            gameContainer.insertBefore(destino, placeholder);
+            currentStep++;
+
+            // 👉 Pula próximos já corretos
+            while (
+                currentStep < presidentes.length &&
+                limparNome(gameContainer.children[currentStep]?.getAttribute('data-name')) === limparNome(ordem[currentStep])
+            ) {
+                gameContainer.children[currentStep].classList.add('correct');
+                currentStep++;
+            }
+
+            checkOrder();
+
+            if (currentStep === presidentes.length) {
+                message.textContent = "🎉 Ordem e Progresso! Você concluiu com excelência!";
+                startPresentation();
+            }
+        }, 300);
+    } else {
+        item.classList.add('sutil-erro');
+        setTimeout(() => {
+            item.classList.remove('sutil-erro');
+        }, 600);
     }
-
-    if (!selectedItem) {
-        item.classList.add('selected');
-        item.style.transform = 'scale(1.15)';
-        selectedItem = item;
-        return;
-    }
-
-    const parent = item.parentNode;
-
-    const selectedIndex = Array.from(parent.children).indexOf(selectedItem);
-    const itemIndex = Array.from(parent.children).indexOf(item);
-
-    // Clona ambos
-    const cloneA = selectedItem.cloneNode(true);
-    const cloneB = item.cloneNode(true);
-
-    // Remove efeitos visuais
-    cloneA.classList.remove('selected');
-    cloneB.classList.remove('selected');
-    cloneA.style.transform = '';
-    cloneB.style.transform = '';
-
-    // Reatribui eventos de clique
-    cloneA.addEventListener('click', () => handleItemClick(cloneA));
-    cloneB.addEventListener('click', () => handleItemClick(cloneB));
-
-    // Aplica fade-out
-    selectedItem.style.transition = 'opacity 0.2s';
-    item.style.transition = 'opacity 0.2s';
-    selectedItem.style.opacity = 0;
-    item.style.opacity = 0;
-
-    // Faz a troca após o tempo da transição
-    setTimeout(() => {
-        parent.replaceChild(cloneA, item);
-        parent.replaceChild(cloneB, selectedItem);
-        selectedItem = null;
-        checkOrder();
-    }, 200); // 200ms = tempo do fade
 }
+
 
 
 
@@ -311,4 +379,7 @@ function exitPresentation() {
     endMusic.currentTime = 0;
     restartGame();
 }
+
+
+
 

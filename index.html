@@ -8,6 +8,12 @@
 </head>
 
 <body>
+    <script>
+  // Verifica se já viu instruções
+  if (!localStorage.getItem('instrucoesVistas')) {
+    window.location.href = 'instrucoes.html';
+  }
+</script>
 
 <h1>Presidentes do Brasil</h1>
 
