@@ -1,13 +1,58 @@
- body {
-        font-family: Arial, sans-serif;
-        text-align: center;
-        background-color: white;
-        margin: 0;
-        padding: 20px;
-    }
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('../imagens/fundo/fundo.jpg'); /* sua imagem */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #f8f8f8;
+}
+
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+button {
+  margin-top: 10px;
+}
+
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../imagens/fundo/fundo.jpg') center center / contain repeat;
+  opacity: 0.30; /* ajuste a intensidade aqui */
+  z-index: -1;
+  pointer-events: none;
+}
+
+
+
+#overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0,0,0,0.2);
+  pointer-events: none;
+  z-index: -1;
+}
+
+
 
     h1, h2{
         color: #006400;
+        margin-bottom: 20px;
         
     }
 .item.correct {
