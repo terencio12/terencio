@@ -200,6 +200,13 @@ body::before {
         background-color: #228B22;
     }
 
+  .item.hover-fake {
+  transform: scale(1.05);
+  transition: transform 0.3s;
+  box-shadow: 0 0 12px #228B22;
+}
+
+
     /* Tela de apresentação final */
 #presentation {
     display: none;

@@ -253,7 +253,7 @@ function handleStepClick(item, name) {
 
             if (currentStep === presidentes.length) {
                 message.textContent = "🎉 Ordem e Progresso! Você concluiu com excelência!";
-                startPresentation();
+                animateSequenceBeforePresentation(startPresentation);
             }
         }, 300);
     } else {
@@ -314,7 +314,7 @@ function handleStepClick(item, name) {
 
             if (currentStep === presidentes.length) {
                 message.textContent = "🎉 Ordem e Progresso! Você concluiu com excelência!";
-                startPresentation();
+                animateSequenceBeforePresentation(startPresentation);
             }
         }, 300);
     } else {
@@ -349,7 +349,7 @@ function checkOrder() {
 
     if (isCorrect) {
         message.textContent = "🎉 Ordem e Progresso! Você concluiu com excelência!";
-        startPresentation();
+        animateSequenceBeforePresentation(startPresentation);
     } else {
         message.textContent = "";
     }
@@ -366,11 +366,39 @@ function startGame() {
 }
 
 function restartGame() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
     message.textContent = '';
     createGame();
 }
 
 showOrder();
+
+function animateSequenceBeforePresentation(callback) {
+    const correctItems = [...document.querySelectorAll('#game .item.correct')];
+    let i = 0;
+
+    function highlightNext() {
+        if (i >= correctItems.length) {
+            return callback();
+        }
+
+        const item = correctItems[i];
+        
+        // Faz o scroll até o item atual
+        item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        item.classList.add('hover-fake');
+
+        setTimeout(() => {
+            item.classList.remove('hover-fake');
+            i++;
+            setTimeout(highlightNext, 100); // tempo entre cada item
+        }, 300); // tempo de destaque de cada item
+    }
+
+    highlightNext();
+}
 
 const presentation = document.getElementById('presentation');
 const presentationImg = document.getElementById('presentation-img');
