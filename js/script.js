@@ -4,6 +4,7 @@ const presidentes = [
     "Floriano Peixoto",
     "Prudente de Morais",
     "Campos Sales",
+ 
     "Rodrigues Alves",
     "Afonso Pena",
     "Nilo Peçanha",
@@ -39,52 +40,52 @@ const presidentes = [
     "Michel Temer",
     "Jair Bolsonaro",
     "Lula da Silva (Atual)"
-  
+
 
 ];
 
 const presidentesData = [
-  
-    { nome: "Deodoro da Fonseca", imagem: "imagens/fotos/1.png", inicio: "1889", fim: "1891" },
-    { nome: "Floriano Peixoto", imagem: "imagens/fotos/2.png", inicio: "1891", fim: "1894" },
-    { nome: "Prudente de Morais", imagem: "imagens/fotos/3.png", inicio: "1894", fim: "1898" },
-    { nome: "Campos Sales", imagem: "imagens/fotos/4.png", inicio: "1898", fim: "1902" },
-    { nome: "Rodrigues Alves", imagem: "imagens/fotos/5.png", inicio: "1902", fim: "1906" }, 
-    { nome: "Afonso Pena", imagem: "imagens/fotos/6.png", inicio: "1906", fim: "1909" },
-    { nome: "Nilo Peçanha", imagem: "imagens/fotos/7.png", inicio: "1909", fim: "1910" },
-    { nome: "Hermes da Fonseca", imagem: "imagens/fotos/8.png", inicio: "1910", fim: "1914" },
-    { nome: "Venceslau Brás", imagem: "imagens/fotos/9.png", inicio: "1914", fim: "1918" },
-    { nome: "Delfim Moreira", imagem: "imagens/fotos/10.png", inicio: "1918", fim: "1919" },
-    { nome: "Epitácio Pessoa", imagem: "imagens/fotos/11.png", inicio: "1919", fim: "1922" },
-    { nome: "Artur Bernardes", imagem: "imagens/fotos/12.png", inicio: "1922", fim: "1926" },
-    { nome: "Washington Luís", imagem: "imagens/fotos/13.png", inicio: "1926", fim: "1930" },
-    { nome: "Getúlio Vargas (1930–1945)", imagem: "imagens/fotos/14.png", inicio: "1930", fim: "1945" },
-    { nome: "José Linhares", imagem: "imagens/fotos/15.png", inicio: "1945", fim: "1946" },
-    { nome: "Eurico Gaspar Dutra", imagem: "imagens/fotos/16.png", inicio: "1946", fim: "1951" },
-    { nome: "Getúlio Vargas (1951–1954)", imagem: "imagens/fotos/17.png", inicio: "1951", fim: "1954" },
-    { nome: "Café Filho", imagem: "imagens/fotos/18.png", inicio: "1954", fim: "1955" },
-    { nome: "Carlos Luz", imagem: "imagens/fotos/19.png", inicio: "1955", fim: "1955" },
-    { nome: "Nereu Ramos", imagem: "imagens/fotos/20.png", inicio: "1955", fim: "1956" },
-    { nome: "Juscelino Kubitschek", imagem: "imagens/fotos/21.png", inicio: "1956", fim: "1961" },
-    { nome: "Jânio Quadros", imagem: "imagens/fotos/22.png", inicio: "1961", fim: "1961" },
-    { nome: "Ranieri Mazzilli (1ª vez)", imagem: "imagens/fotos/23.png", inicio: "1961", fim: "1961" },
-    { nome: "João Goulart", imagem: "imagens/fotos/24.png", inicio: "1961", fim: "1964" },
-    { nome: "Ranieri Mazzilli (2ª vez)", imagem: "imagens/fotos/25.png", inicio: "1964", fim: "1964" },
-    { nome: "Castelo Branco", imagem: "imagens/fotos/26.png", inicio: "1964", fim: "1967" },
-    { nome: "Costa e Silva", imagem: "imagens/fotos/27.png", inicio: "1967", fim: "1969" },
-    { nome: "Emílio Garrastazu Médici", imagem: "imagens/fotos/28.png", inicio: "1969", fim: "1974" },
-    { nome: "Ernesto Geisel", imagem: "imagens/fotos/29.png", inicio: "1974", fim: "1979" },
-    { nome: "João Figueiredo", imagem: "imagens/fotos/30.png", inicio: "1979", fim: "1985" },
-    { nome: "José Sarney", imagem: "imagens/fotos/31.png", inicio: "1985", fim: "1990" },
-    { nome: "Fernando Collor", imagem: "imagens/fotos/32.png", inicio: "1990", fim: "1992" },
-    { nome: "Itamar Franco", imagem: "imagens/fotos/33.png", inicio: "1992", fim: "1995" },
-    { nome: "Fernando Henrique Cardoso", imagem: "imagens/fotos/34.png", inicio: "1995", fim: "2003" },
-    { nome: "Luiz Inácio Lula da Silva", imagem: "imagens/fotos/35.png", inicio: "2003", fim: "2011" },
-    { nome: "Dilma Rousseff", imagem: "imagens/fotos/36.png", inicio: "2011", fim: "2016" },
-    { nome: "Michel Temer", imagem: "imagens/fotos/37.png", inicio: "2016", fim: "2019" },
-    { nome: "Jair Bolsonaro", imagem: "imagens/fotos/38.png", inicio: "2019", fim: "2023" },
-    { nome: "Lula da Silva (Atual)", imagem: "imagens/fotos/39.png", inicio: "2023", fim: "Atual" }    
+    { nome: "Deodoro da Fonseca", nomeCompleto: "Manuel Deodoro da Fonseca", imagem: "imagens/fotos/1.png", inicio: "1889", fim: "1891" },
+    { nome: "Floriano Peixoto", nomeCompleto: "Floriano Vieira Peixoto", imagem: "imagens/fotos/2.png", inicio: "1891", fim: "1894" },
+    { nome: "Prudente de Morais", nomeCompleto: "Prudente José de Morais Barros", imagem: "imagens/fotos/3.png", inicio: "1894", fim: "1898" },
+    { nome: "Campos Sales", nomeCompleto: "Manuel Ferraz de Campos Sales", imagem: "imagens/fotos/4.png", inicio: "1898", fim: "1902" },
+    { nome: "Rodrigues Alves", nomeCompleto: "Francisco de Paula Rodrigues Alves", imagem: "imagens/fotos/5.png", inicio: "1902", fim: "1906" },
+    { nome: "Afonso Pena", nomeCompleto: "Afonso Augusto Moreira Pena", imagem: "imagens/fotos/6.png", inicio: "1906", fim: "1909" },
+    { nome: "Nilo Peçanha", nomeCompleto: "Nilo Procópio Peçanha", imagem: "imagens/fotos/7.png", inicio: "1909", fim: "1910" },
+    { nome: "Hermes da Fonseca", nomeCompleto: "Hermes Rodrigues da Fonseca", imagem: "imagens/fotos/8.png", inicio: "1910", fim: "1914" },
+    { nome: "Venceslau Brás", nomeCompleto: "Venceslau Brás Pereira Gomes", imagem: "imagens/fotos/9.png", inicio: "1914", fim: "1918" },
+    { nome: "Delfim Moreira", nomeCompleto: "Delfim Moreira da Costa Ribeiro", imagem: "imagens/fotos/10.png", inicio: "1918", fim: "1919" },
+    { nome: "Epitácio Pessoa", nomeCompleto: "Epitácio Lindolfo da Silva Pessoa", imagem: "imagens/fotos/11.png", inicio: "1919", fim: "1922" },
+    { nome: "Artur Bernardes", nomeCompleto: "Artur da Silva Bernardes", imagem: "imagens/fotos/12.png", inicio: "1922", fim: "1926" },
+    { nome: "Washington Luís", nomeCompleto: "Washington Luís Pereira de Sousa", imagem: "imagens/fotos/13.png", inicio: "1926", fim: "1930" },
+    { nome: "Getúlio Vargas (1930–1945)", nomeCompleto: "Getúlio Dornelles Vargas", imagem: "imagens/fotos/14.png", inicio: "1930", fim: "1945" },
+    { nome: "José Linhares", nomeCompleto: "José Linhares", imagem: "imagens/fotos/15.png", inicio: "1945", fim: "1946" },
+    { nome: "Eurico Gaspar Dutra", nomeCompleto: "Eurico Gaspar Dutra", imagem: "imagens/fotos/16.png", inicio: "1946", fim: "1951" },
+    { nome: "Getúlio Vargas (1951–1954)", nomeCompleto: "Getúlio Dornelles Vargas", imagem: "imagens/fotos/17.png", inicio: "1951", fim: "1954" },
+    { nome: "Café Filho", nomeCompleto: "João Fernandes Campos Café Filho", imagem: "imagens/fotos/18.png", inicio: "1954", fim: "1955" },
+    { nome: "Carlos Luz", nomeCompleto: "Carlos Coimbra da Luz", imagem: "imagens/fotos/19.png", inicio: "1955", fim: "1955" },
+    { nome: "Nereu Ramos", nomeCompleto: "Nereu de Oliveira Ramos", imagem: "imagens/fotos/20.png", inicio: "1955", fim: "1956" },
+    { nome: "Juscelino Kubitschek", nomeCompleto: "Juscelino Kubitschek de Oliveira", imagem: "imagens/fotos/21.png", inicio: "1956", fim: "1961" },
+    { nome: "Jânio Quadros", nomeCompleto: "Jânio da Silva Quadros", imagem: "imagens/fotos/22.png", inicio: "1961", fim: "1961" },
+    { nome: "Ranieri Mazzilli (1ª vez)", nomeCompleto: "Pascoal Ranieri Mazzilli", imagem: "imagens/fotos/23.png", inicio: "1961", fim: "1961" },
+    { nome: "João Goulart", nomeCompleto: "João Belchior Marques Goulart", imagem: "imagens/fotos/24.png", inicio: "1961", fim: "1964" },
+    { nome: "Ranieri Mazzilli (2ª vez)", nomeCompleto: "Pascoal Ranieri Mazzilli", imagem: "imagens/fotos/25.png", inicio: "1964", fim: "1964" },
+    { nome: "Castelo Branco", nomeCompleto: "Humberto de Alencar Castelo Branco", imagem: "imagens/fotos/26.png", inicio: "1964", fim: "1967" },
+    { nome: "Costa e Silva", nomeCompleto: "Artur da Costa e Silva", imagem: "imagens/fotos/27.png", inicio: "1967", fim: "1969" },
+    { nome: "Emílio Garrastazu Médici", nomeCompleto: "Emílio Garrastazu Médici", imagem: "imagens/fotos/28.png", inicio: "1969", fim: "1974" },
+    { nome: "Ernesto Geisel", nomeCompleto: "Ernesto Beckmann Geisel", imagem: "imagens/fotos/29.png", inicio: "1974", fim: "1979" },
+    { nome: "João Figueiredo", nomeCompleto: "João Baptista de Oliveira Figueiredo", imagem: "imagens/fotos/30.png", inicio: "1979", fim: "1985" },
+    { nome: "José Sarney", nomeCompleto: "José Sarney de Araújo Costa", imagem: "imagens/fotos/31.png", inicio: "1985", fim: "1990" },
+    { nome: "Fernando Collor", nomeCompleto: "Fernando Affonso Collor de Mello", imagem: "imagens/fotos/32.png", inicio: "1990", fim: "1992" },
+    { nome: "Itamar Franco", nomeCompleto: "Itamar Augusto Cautiero Franco", imagem: "imagens/fotos/33.png", inicio: "1992", fim: "1995" },
+    { nome: "Fernando Henrique Cardoso", nomeCompleto: "Fernando Henrique Cardoso", imagem: "imagens/fotos/34.png", inicio: "1995", fim: "2003" },
+    { nome: "Luiz Inácio Lula da Silva", nomeCompleto: "Luiz Inácio Lula da Silva", imagem: "imagens/fotos/35.png", inicio: "2003", fim: "2011" },
+    { nome: "Dilma Rousseff", nomeCompleto: "Dilma Vana Rousseff", imagem: "imagens/fotos/36.png", inicio: "2011", fim: "2016" },
+    { nome: "Michel Temer", nomeCompleto: "Michel Miguel Elias Temer Lulia", imagem: "imagens/fotos/37.png", inicio: "2016", fim: "2019" },
+    { nome: "Jair Bolsonaro", nomeCompleto: "Jair Messias Bolsonaro", imagem: "imagens/fotos/38.png", inicio: "2019", fim: "2023" },
+    { nome: "Lula da Silva (Atual)", nomeCompleto: "Luiz Inácio Lula da Silva", imagem: "imagens/fotos/39.png", inicio: "2023", fim: "Atual" }
 ];
+
 
 const ordemContainer = document.getElementById('ordem');
 const gameContainer = document.getElementById('game');
@@ -184,6 +185,7 @@ do {
     shuffled.forEach((name) => {
         const div = document.createElement('div');
         div.className = 'item';
+        div.classList.add('noclick'); // Marca como "nunca clicado"
         div.setAttribute('data-name', name);
         div.setAttribute('data-hover', limparNome(name));
 
@@ -216,92 +218,65 @@ if (!presidenteInfo) {
 
 
 
-function handleStepClick(item, name) {
-    const esperado = limparNome(ordem[currentStep]);
-    const clicado = limparNome(name);
-
-    if (clicado === esperado) {
-        // move para posição correta
-        const destino = document.createElement('div');
-        destino.className = 'item correct';
-        destino.setAttribute('data-name', name);
-        destino.setAttribute('data-hover', limparNome(name));
-
-        const img = document.createElement('img');
-        img.src = item.querySelector('img').src;
-        img.alt = name;
-        destino.appendChild(img);
-
-        const oldItem = item;
-        oldItem.classList.add('fade-out');
-
-        setTimeout(() => {
-            gameContainer.removeChild(oldItem);
-            gameContainer.insertBefore(destino, gameContainer.children[currentStep]);
-            currentStep++;
-
-            // 👉 Verifica se as próximas peças já estão corretas e avança automaticamente
-            while (
-                currentStep < presidentes.length &&
-                limparNome(gameContainer.children[currentStep]?.getAttribute('data-name')) === limparNome(ordem[currentStep])
-            ) {
-                gameContainer.children[currentStep].classList.add('correct');
-                currentStep++;
-            }
-
-            checkOrder();
-
-            if (currentStep === presidentes.length) {
-                message.textContent = "🎉 Ordem e Progresso! Você concluiu com excelência!";
-                animateSequenceBeforePresentation(startPresentation);
-            }
-        }, 300);
-    } else {
-        item.classList.add('sutil-erro');
-        setTimeout(() => {
-            item.classList.remove('sutil-erro');
-        }, 600);
-    }
-}
-
-
-
-
-
    function handleStepClick(item, name) {
-    while (currentStep < ordem.length && gameContainer.children[currentStep]?.dataset.name && limparNome(gameContainer.children[currentStep].dataset.name) === limparNome(ordem[currentStep])) currentStep++;
+    if (locked) return;
+
+    item.classList.remove('noclick');
+
+    // Atualiza o currentStep pulando itens já corretos
+    while (
+        currentStep < ordem.length &&
+        gameContainer.children[currentStep]?.dataset.name &&
+        limparNome(gameContainer.children[currentStep].dataset.name) === limparNome(ordem[currentStep])
+    ) {
+        currentStep++;
+    }
+
     const esperado = limparNome(ordem[currentStep]);
     const clicado = limparNome(name);
 
     if (clicado === esperado) {
-        // Elemento de destino ainda vazio no DOM
         const placeholder = gameContainer.children[currentStep];
 
-        // 👉 Faz a rolagem até a casa de destino
+        // Scroll suave até o lugar correto
         if (placeholder) {
             placeholder.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
-        // move para posição correta
-        const destino = document.createElement('div');
-        destino.className = 'item correct';
-        destino.setAttribute('data-name', name);
-        destino.setAttribute('data-hover', limparNome(name));
+        // Cria novo elemento com classe .correct
+const destino = document.createElement('div');
+destino.className = 'item correct';
+destino.setAttribute('data-name', name);
+destino.setAttribute('data-hover', limparNome(name));
 
-        const img = document.createElement('img');
-        img.src = item.querySelector('img').src;
-        img.alt = name;
-        destino.appendChild(img);
+const img = document.createElement('img');
+img.src = item.querySelector('img').src;
+img.alt = name;
 
-        const oldItem = item;
-        oldItem.classList.add('fade-out');
+const label = document.createElement('div');
+label.className = 'presidente-nome';
+label.textContent = limparNome(name);
+
+destino.appendChild(img);
+destino.appendChild(label); // ✅ adiciona o nome também
+
+
+        // Efeito de saída suave
+        item.classList.add('fade-out');
 
         setTimeout(() => {
-            gameContainer.removeChild(oldItem);
+            // Remove a peça errada clicada
+            gameContainer.removeChild(item);
+
+            // Insere o item correto na posição
             gameContainer.insertBefore(destino, placeholder);
             currentStep++;
 
-            // 👉 Pula próximos já corretos
+            // Limpa erros visuais anteriores
+            const erros = document.querySelectorAll('.sutil-erro:not(.correct)');
+            erros.forEach(el => el.classList.remove('sutil-erro'));
+
+            // Marca próximos que já estão certos
             while (
                 currentStep < presidentes.length &&
                 limparNome(gameContainer.children[currentStep]?.getAttribute('data-name')) === limparNome(ordem[currentStep])
@@ -309,6 +284,16 @@ function handleStepClick(item, name) {
                 gameContainer.children[currentStep].classList.add('correct');
                 currentStep++;
             }
+
+            // Reaplica .noclick apenas nas peças ainda erradas
+const todas = [...gameContainer.children];
+todas.forEach(el => {
+    el.classList.remove('noclick');
+    if (!el.classList.contains('correct')) {
+        el.classList.add('noclick');
+    }
+});
+
 
             checkOrder();
 
@@ -318,14 +303,10 @@ function handleStepClick(item, name) {
             }
         }, 300);
     } else {
+        // Marca visualmente o erro clicado
         item.classList.add('sutil-erro');
-        setTimeout(() => {
-            item.classList.remove('sutil-erro');
-        }, 600);
     }
 }
-
-
 
 
 function checkOrder() {
@@ -333,29 +314,31 @@ function checkOrder() {
     const current = items.map(el => limparNome(el.getAttribute('data-name')));
     const correct = presidentes.map(limparNome);
 
-    let isCorrect = true;
+    let tudoCertoAteAqui = true;
 
     items.forEach((el, i) => {
         const name = current[i];
-        if (name === correct[i]) {
+        const esperado = correct[i];
+
+        if (tudoCertoAteAqui && name === esperado) {
             el.classList.add('correct');
             el.classList.remove('incorrect');
         } else {
+            tudoCertoAteAqui = false;
             el.classList.remove('correct');
             el.classList.add('incorrect');
-            isCorrect = false;
         }
     });
 
-    if (isCorrect) {
+    if (tudoCertoAteAqui) {
         message.textContent = "🎉 Ordem e Progresso! Você concluiu com excelência!";
         animateSequenceBeforePresentation(startPresentation);
     } else {
         message.textContent = "";
     }
 }
-
 function startGame() {
+   
     esconderTitulos();
     startMusic();
     ordemContainer.style.display = 'none';
@@ -375,6 +358,8 @@ function restartGame() {
 showOrder();
 
 function animateSequenceBeforePresentation(callback) {
+     bgMusic.pause();
+    endMusic.play();
     const correctItems = [...document.querySelectorAll('#game .item.correct')];
     let i = 0;
 
@@ -393,8 +378,8 @@ function animateSequenceBeforePresentation(callback) {
         setTimeout(() => {
             item.classList.remove('hover-fake');
             i++;
-            setTimeout(highlightNext, 100); // tempo entre cada item
-        }, 300); // tempo de destaque de cada item
+            setTimeout(highlightNext, 30); // tempo entre cada item
+        }, 150); // tempo de destaque de cada item
     }
 
     highlightNext();
@@ -406,8 +391,6 @@ const presentationInfo = document.getElementById('presentation-info');
 const endMusic = document.getElementById('endMusic');
 
 function startPresentation() {
-    bgMusic.pause();
-    endMusic.play();
     presentation.style.display = 'flex';
     let index = 0;
 
@@ -421,7 +404,9 @@ function startPresentation() {
         const p = presidentesData[index];
         presentationImg.src = p.imagem;
         presentationImg.style.display = 'block';
-        presentationInfo.innerHTML = `<strong>${p.nome}</strong><br>${p.inicio} - ${p.fim}`;
+        const nomeApresentado = p.nomeCompleto || p.nome;
+        presentationInfo.innerHTML = `<strong>${nomeApresentado}</strong><br>${p.inicio} - ${p.fim}`;
+
         index++;
 
         setTimeout(showNext, 4000);
