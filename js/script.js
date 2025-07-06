@@ -4,7 +4,7 @@ const presidentes = [
     "Floriano Peixoto",
     "Prudente de Morais",
     "Campos Sales",
- /*
+
     "Rodrigues Alves",
     "Afonso Pena",
     "Nilo Peçanha",
@@ -41,7 +41,7 @@ const presidentes = [
     "Jair Bolsonaro",
     "Lula da Silva (Atual)"
 
-*/
+
 ];
 
 const presidentesData = [
@@ -50,7 +50,7 @@ const presidentesData = [
     { nome: "Floriano Peixoto", nomeCompleto: "Floriano Vieira Peixoto", imagem: "imagens/fotos/2.png", inicio: "1891", fim: "1894" },
     { nome: "Prudente de Morais", nomeCompleto: "Prudente José de Morais Barros", imagem: "imagens/fotos/3.png", inicio: "1894", fim: "1898" },
     { nome: "Campos Sales", nomeCompleto: "Manuel Ferraz de Campos Sales", imagem: "imagens/fotos/4.png", inicio: "1898", fim: "1902" },
-/*   
+  
     { nome: "Rodrigues Alves", nomeCompleto: "Francisco de Paula Rodrigues Alves", imagem: "imagens/fotos/5.png", inicio: "1902", fim: "1906" },
     { nome: "Afonso Pena", nomeCompleto: "Afonso Augusto Moreira Pena", imagem: "imagens/fotos/6.png", inicio: "1906", fim: "1909" },
     { nome: "Nilo Peçanha", nomeCompleto: "Nilo Procópio Peçanha", imagem: "imagens/fotos/7.png", inicio: "1909", fim: "1910" },
@@ -86,7 +86,7 @@ const presidentesData = [
     { nome: "Michel Temer", nomeCompleto: "Michel Miguel Elias Temer Lulia", imagem: "imagens/fotos/37.png", inicio: "2016", fim: "2019" },
     { nome: "Jair Bolsonaro", nomeCompleto: "Jair Messias Bolsonaro", imagem: "imagens/fotos/38.png", inicio: "2019", fim: "2023" },
     { nome: "Lula da Silva (Atual)", nomeCompleto: "Luiz Inácio Lula da Silva", imagem: "imagens/fotos/39.png", inicio: "2023", fim: "Atual" }
-*/
+
     ];
 
 
@@ -164,10 +164,18 @@ function showOrder() {
 
 
 function shuffle(array) {
-    return array.map(value => ({ value, sort: Math.random() }))
-                .sort((a, b) => a.sort - b.sort)
-                .map(({ value }) => value);
+    let shuffled;
+
+    do {
+        shuffled = array
+            .map(value => ({ value, sort: Math.random() }))
+            .sort((a, b) => a.sort - b.sort)
+            .map(({ value }) => value);
+    } while (limparNome(shuffled[0]) === "Deodoro da Fonseca");
+
+    return shuffled;
 }
+
 
 let selectedItem = null;
 
