@@ -4,7 +4,7 @@ const presidentes = [
     "Floriano Peixoto",
     "Prudente de Morais",
     "Campos Sales",
- 
+ /*
     "Rodrigues Alves",
     "Afonso Pena",
     "Nilo Peçanha",
@@ -41,14 +41,16 @@ const presidentes = [
     "Jair Bolsonaro",
     "Lula da Silva (Atual)"
 
-
+*/
 ];
 
 const presidentesData = [
+
     { nome: "Deodoro da Fonseca", nomeCompleto: "Manuel Deodoro da Fonseca", imagem: "imagens/fotos/1.png", inicio: "1889", fim: "1891" },
     { nome: "Floriano Peixoto", nomeCompleto: "Floriano Vieira Peixoto", imagem: "imagens/fotos/2.png", inicio: "1891", fim: "1894" },
     { nome: "Prudente de Morais", nomeCompleto: "Prudente José de Morais Barros", imagem: "imagens/fotos/3.png", inicio: "1894", fim: "1898" },
     { nome: "Campos Sales", nomeCompleto: "Manuel Ferraz de Campos Sales", imagem: "imagens/fotos/4.png", inicio: "1898", fim: "1902" },
+/*   
     { nome: "Rodrigues Alves", nomeCompleto: "Francisco de Paula Rodrigues Alves", imagem: "imagens/fotos/5.png", inicio: "1902", fim: "1906" },
     { nome: "Afonso Pena", nomeCompleto: "Afonso Augusto Moreira Pena", imagem: "imagens/fotos/6.png", inicio: "1906", fim: "1909" },
     { nome: "Nilo Peçanha", nomeCompleto: "Nilo Procópio Peçanha", imagem: "imagens/fotos/7.png", inicio: "1909", fim: "1910" },
@@ -84,7 +86,8 @@ const presidentesData = [
     { nome: "Michel Temer", nomeCompleto: "Michel Miguel Elias Temer Lulia", imagem: "imagens/fotos/37.png", inicio: "2016", fim: "2019" },
     { nome: "Jair Bolsonaro", nomeCompleto: "Jair Messias Bolsonaro", imagem: "imagens/fotos/38.png", inicio: "2019", fim: "2023" },
     { nome: "Lula da Silva (Atual)", nomeCompleto: "Luiz Inácio Lula da Silva", imagem: "imagens/fotos/39.png", inicio: "2023", fim: "Atual" }
-];
+*/
+    ];
 
 
 const ordemContainer = document.getElementById('ordem');
@@ -352,8 +355,15 @@ function restartGame() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     message.textContent = '';
+
+    bgMusic.pause();          // ⏸ Garante que pare antes
+    bgMusic.currentTime = 0;  // 🔁 Reinicia do começo
+    musicStarted = false;     // 🔄 Permite tocar novamente
+    startMusic();             // ▶️ Toca do início
+
     createGame();
 }
+
 
 showOrder();
 
@@ -421,6 +431,19 @@ function exitPresentation() {
     endMusic.currentTime = 0;
     restartGame();
 }
+
+window.addEventListener('pagehide', () => {
+  bgMusic.pause();
+  bgMusic.currentTime = 0;
+});
+
+window.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'hidden') {
+    bgMusic.pause();
+    bgMusic.currentTime = 0;
+  }
+});
+
 
 
 
