@@ -41,7 +41,6 @@ const presidentes = [
     "Jair Bolsonaro",
     "Lula da Silva (Atual)"
 
-
 ];
 
 const presidentesData = [
@@ -50,7 +49,7 @@ const presidentesData = [
     { nome: "Floriano Peixoto", nomeCompleto: "Floriano Vieira Peixoto", imagem: "imagens/fotos/2.png", inicio: "1891", fim: "1894" },
     { nome: "Prudente de Morais", nomeCompleto: "Prudente José de Morais Barros", imagem: "imagens/fotos/3.png", inicio: "1894", fim: "1898" },
     { nome: "Campos Sales", nomeCompleto: "Manuel Ferraz de Campos Sales", imagem: "imagens/fotos/4.png", inicio: "1898", fim: "1902" },
-  
+
     { nome: "Rodrigues Alves", nomeCompleto: "Francisco de Paula Rodrigues Alves", imagem: "imagens/fotos/5.png", inicio: "1902", fim: "1906" },
     { nome: "Afonso Pena", nomeCompleto: "Afonso Augusto Moreira Pena", imagem: "imagens/fotos/6.png", inicio: "1906", fim: "1909" },
     { nome: "Nilo Peçanha", nomeCompleto: "Nilo Procópio Peçanha", imagem: "imagens/fotos/7.png", inicio: "1909", fim: "1910" },
@@ -310,7 +309,7 @@ todas.forEach(el => {
 
             if (currentStep === presidentes.length) {
                 message.textContent = "🎉 Ordem e Progresso! Você concluiu com excelência!";
-                animateSequenceBeforePresentation(startPresentation);
+                startPresentation();
             }
         }, 300);
     } else {
@@ -343,7 +342,7 @@ function checkOrder() {
 
     if (tudoCertoAteAqui) {
         message.textContent = "🎉 Ordem e Progresso! Você concluiu com excelência!";
-        animateSequenceBeforePresentation(startPresentation);
+        startPresentation();
     } else {
         message.textContent = "";
     }
@@ -375,33 +374,7 @@ function restartGame() {
 
 showOrder();
 
-function animateSequenceBeforePresentation(callback) {
-     bgMusic.pause();
-    endMusic.play();
-    const correctItems = [...document.querySelectorAll('#game .item.correct')];
-    let i = 0;
 
-    function highlightNext() {
-        if (i >= correctItems.length) {
-            return callback();
-        }
-
-        const item = correctItems[i];
-        
-        // Faz o scroll até o item atual
-        item.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-        item.classList.add('hover-fake');
-
-        setTimeout(() => {
-            item.classList.remove('hover-fake');
-            i++;
-            setTimeout(highlightNext, 30); // tempo entre cada item
-        }, 150); // tempo de destaque de cada item
-    }
-
-    highlightNext();
-}
 
 const presentation = document.getElementById('presentation');
 const presentationImg = document.getElementById('presentation-img');
@@ -409,6 +382,8 @@ const presentationInfo = document.getElementById('presentation-info');
 const endMusic = document.getElementById('endMusic');
 
 function startPresentation() {
+     bgMusic.pause();
+    endMusic.play();
     presentation.style.display = 'flex';
     let index = 0;
 
