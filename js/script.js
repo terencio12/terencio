@@ -32,6 +32,7 @@ const presidentes = [
     "Ernesto Geisel",
     "João Figueiredo",
     "José Sarney",
+   
     "Fernando Collor",
     "Itamar Franco",
     "Fernando Henrique Cardoso",
@@ -44,6 +45,7 @@ const presidentes = [
 ];
 
 const presidentesData = [
+   
 
     { nome: "Deodoro da Fonseca", nomeCompleto: "Manuel Deodoro da Fonseca", imagem: "imagens/fotos/1.png", inicio: "1889", fim: "1891" },
     { nome: "Floriano Peixoto", nomeCompleto: "Floriano Vieira Peixoto", imagem: "imagens/fotos/2.png", inicio: "1891", fim: "1894" },
@@ -77,6 +79,7 @@ const presidentesData = [
     { nome: "Ernesto Geisel", nomeCompleto: "Ernesto Beckmann Geisel", imagem: "imagens/fotos/29.png", inicio: "1974", fim: "1979" },
     { nome: "João Figueiredo", nomeCompleto: "João Baptista de Oliveira Figueiredo", imagem: "imagens/fotos/30.png", inicio: "1979", fim: "1985" },
     { nome: "José Sarney", nomeCompleto: "José Sarney de Araújo Costa", imagem: "imagens/fotos/31.png", inicio: "1985", fim: "1990" },
+  
     { nome: "Fernando Collor", nomeCompleto: "Fernando Affonso Collor de Mello", imagem: "imagens/fotos/32.png", inicio: "1990", fim: "1992" },
     { nome: "Itamar Franco", nomeCompleto: "Itamar Augusto Cautiero Franco", imagem: "imagens/fotos/33.png", inicio: "1992", fim: "1995" },
     { nome: "Fernando Henrique Cardoso", nomeCompleto: "Fernando Henrique Cardoso", imagem: "imagens/fotos/34.png", inicio: "1995", fim: "2003" },
