@@ -16,8 +16,9 @@ body {
   height: 100%;
   background-image: url('../imagens/fundo/fundo.jpg'); /* Caminho da sua imagem */
   background-size: cover;
+    background-repeat: no-repeat;
   background-position: center;
-  opacity: 0.3; /* Aqui você controla a visibilidade */
+  opacity: 0.2; /* Aqui você controla a visibilidade */
   z-index: -1;
 }
 

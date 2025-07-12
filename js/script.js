@@ -45,7 +45,7 @@ const presidentes = [
 ];
 
 const presidentesData = [
-   
+ 
 
     { nome: "Deodoro da Fonseca", nomeCompleto: "Manuel Deodoro da Fonseca", imagem: "imagens/fotos/1.png", inicio: "1889", fim: "1891" },
     { nome: "Floriano Peixoto", nomeCompleto: "Floriano Vieira Peixoto", imagem: "imagens/fotos/2.png", inicio: "1891", fim: "1894" },
